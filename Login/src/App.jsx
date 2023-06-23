@@ -1,5 +1,9 @@
 import Login from "./views/Login";
-import Box from "@mui/material/Box";
+import Home from "./views/Home";
+
+import Box from '@mui/material/Box'
+
+import { Routes, Route } from "react-router-dom";
 
 /* Estilos */
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -18,9 +22,9 @@ const theme = createTheme({
       dark: "#101010",
       contrastText: "#FFF",
     },
-    facebook: "#3b5998", 
+    facebook: "#3b5998",
     twitter: "#00acee",
-    google: "#ab2128"
+    google: "#ab2128",
   },
 });
 
@@ -36,7 +40,10 @@ const App = () => {
         justifyContent={"center"}
         alignItems={"center"}
       >
-        <Login />
+        <Routes>
+          <Route path="/Home" element={<Home />} />
+          <Route path="/Login" element={<Login />} />
+        </Routes>
       </Box>
     </ThemeProvider>
   );
