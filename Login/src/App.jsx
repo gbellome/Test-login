@@ -6,7 +6,7 @@ import Login from './pages/login/login.test'
 const App = () => {
   return (
     <ThemeProvider theme={Theme}>
-      <Login />
+      <Login login />
     </ThemeProvider>
   )
 }

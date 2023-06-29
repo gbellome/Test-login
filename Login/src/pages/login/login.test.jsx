@@ -60,7 +60,7 @@ const Formulario = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 85%;
-  min-height: 500px;
+  gap: 4rem;
   padding: 2rem;
 `
 
