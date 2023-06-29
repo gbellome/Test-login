@@ -5,19 +5,23 @@ import FacebookIcon from '@mui/icons-material/Facebook'
 import TwitterIcon from '@mui/icons-material/Twitter'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 
+import useScreenSize from './../../../hooks/useScreenSize'
+
 const Social = () => {
+  const { width } = useScreenSize()
+
   return (
     <Contenedor>
-      <Fab color="secondary.light">
+      <Fab size={width < 480 ? 'medium' : 'large'} color="secondary.light">
         <GoogleIcon />
       </Fab>
-      <Fab color="secondary.light">
+      <Fab size={width < 480 ? 'medium' : 'large'} color="secondary.light">
         <FacebookIcon />
       </Fab>
-      <Fab color="secondary.light">
+      <Fab size={width < 480 ? 'medium' : 'large'} color="secondary.light">
         <TwitterIcon />
       </Fab>
-      <Fab color="secondary.light">
+      <Fab size={width < 480 ? 'medium' : 'large'} color="secondary.light">
         <LinkedInIcon />
       </Fab>
     </Contenedor>
@@ -26,9 +30,9 @@ const Social = () => {
 
 const Contenedor = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
-  gap: 5rem;
+  width: 100%;
 `
 
 export default Social

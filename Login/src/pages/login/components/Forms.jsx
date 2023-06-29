@@ -4,59 +4,45 @@ import Button from '@mui/material/Button'
 import Link from '@mui/material/Link'
 import React from 'react'
 
-const Forms = () => {
+const Forms = ({ login }) => {
   return (
-    <Form>
+    <>
       <Entradas>
-        <TextField
-          fullWidth
-          id="outlined-basic"
-          label="Usuario o email"
-          variant="outlined"
-        />
-        <TextField
-          fullWidth
-          id="outlined-basic"
-          type="password"
-          label="Contraseña"
-          variant="outlined"
-        />
+        <TextField fullWidth label="Usuario o email" variant="outlined" />
+        {login && (
+          <TextField
+            fullWidth
+            type="password"
+            label="Contraseña"
+            variant="outlined"
+          />
+        )}
       </Entradas>
       <Acciones>
         <Button fullWidth variant="contained" color="primary">
-          Entrar
+          {login ? 'Entrar' : 'Recuperar clave'}
         </Button>
-        <Link href="#">¿Olvidaste tu contraseña?</Link>
+        <Link href="#">{login ? '¿Olvidaste tu contraseña?' : 'Volver'}</Link>
       </Acciones>
-    </Form>
+    </>
   )
 }
-
-const Form = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 400px;
-  padding: 10px;
-  gap: 5rem;
-`
 
 const Entradas = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  padding: 10px;
-  gap: 2rem;
+  justify-content: center;
+  align-items: center;
   width: 100%;
+  gap: 2rem;
 `
 
 const Acciones = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10px;
-  gap: 1rem;
   width: 100%;
+  gap: 1rem;
 `
 
 export default Forms
