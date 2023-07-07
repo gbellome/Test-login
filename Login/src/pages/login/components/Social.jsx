@@ -12,16 +12,40 @@ const Social = () => {
 
   return (
     <Contenedor>
-      <Fab size={width < 480 ? 'medium' : 'large'} color="secondary.light">
+      <Fab
+        size={width < 480 ? 'medium' : 'large'}
+        color="secondary.light"
+        sx={{
+          ':hover': { bgcolor: 'primary.main', color: 'white' },
+        }}
+      >
         <GoogleIcon />
       </Fab>
-      <Fab size={width < 480 ? 'medium' : 'large'} color="secondary.light">
+      <Fab
+        size={width < 480 ? 'medium' : 'large'}
+        color="secondary.light"
+        sx={{
+          ':hover': { bgcolor: 'primary.main', color: 'white' },
+        }}
+      >
         <FacebookIcon />
       </Fab>
-      <Fab size={width < 480 ? 'medium' : 'large'} color="secondary.light">
+      <Fab
+        size={width < 480 ? 'medium' : 'large'}
+        color="secondary.light"
+        sx={{
+          ':hover': { bgcolor: 'primary.main', color: 'white' },
+        }}
+      >
         <TwitterIcon />
       </Fab>
-      <Fab size={width < 480 ? 'medium' : 'large'} color="secondary.light">
+      <Fab
+        size={width < 480 ? 'medium' : 'large'}
+        color="secondary.light"
+        sx={{
+          ':hover': { bgcolor: 'primary.main', color: 'white' },
+        }}
+      >
         <LinkedInIcon />
       </Fab>
     </Contenedor>

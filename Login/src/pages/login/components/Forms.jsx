@@ -4,12 +4,12 @@ import Button from '@mui/material/Button'
 import Link from '@mui/material/Link'
 import React from 'react'
 
-const Forms = ({ login }) => {
+const Forms = ({ login, recovery, signin }) => {
   return (
     <>
       <Entradas>
         <TextField fullWidth label="Usuario o email" variant="outlined" />
-        {login && (
+        {(login || signin) && (
           <TextField
             fullWidth
             type="password"
@@ -17,12 +17,23 @@ const Forms = ({ login }) => {
             variant="outlined"
           />
         )}
+        {signin && (
+          <TextField
+            fullWidth
+            type="password"
+            label="Repita contraseña"
+            variant="outlined"
+          />
+        )}
+        {login && <a href="#">¿Olvidaste tu contraseña?</a>}
       </Entradas>
       <Acciones>
         <Button fullWidth variant="contained" color="primary">
-          {login ? 'Entrar' : 'Recuperar clave'}
+          {login && 'Entrar'}
+          {recovery && 'Recuperar clave'}
+          {signin && 'Registrar'}
         </Button>
-        <Link href="#">{login ? '¿Olvidaste tu contraseña?' : 'Volver'}</Link>
+        <a href="#">{login ? '¿Todavía no te registraste? Vení' : 'Volver'}</a>
       </Acciones>
     </>
   )

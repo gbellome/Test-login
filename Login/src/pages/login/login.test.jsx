@@ -1,25 +1,22 @@
 import styled from '@emotion/styled'
 import ImagenFondo from './../../assets/images/ImagenFondo.jpg'
-import Theme from './../../config/themes.config'
 import Logo from './components/Logo'
 import Social from './components/Social'
 import Forms from './components/Forms'
 
-const Login = ({ login }) => {
+const Login = ({ login, recovery, signin }) => {
   return (
     <Fondo>
       <Contenedor>
         <Logo />
         <Formulario>
-          {login ? (
+          {login && (
             <>
               <Social />
               <Divisor />
-              <Forms login />
             </>
-          ) : (
-            <Forms />
           )}
+          <Forms login={login} recovery={recovery} signin={signin} />
         </Formulario>
       </Contenedor>
     </Fondo>
@@ -46,6 +43,7 @@ const Contenedor = styled.div`
   border-radius: 20px;
   min-width: 400px;
   min-height: 600px;
+  gap: 5rem;
 
   @media only screen and (max-width: 480px) {
     width: 100%;
@@ -62,10 +60,11 @@ const Formulario = styled.div`
   width: 85%;
   gap: 4rem;
   padding: 2rem;
+  height: 100%;
 `
 
 const Divisor = styled.div`
-  width: 100%;
+  width: 90%;
   height: 2px;
   background: #ddd;
   text-align: center;
