@@ -12,7 +12,7 @@ const Logotipo = styled.div`
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
-  width: 200px;
   height: 100px;
+  width: 30%;
 `
 export default Logo

@@ -13,7 +13,7 @@ const Social = () => {
   return (
     <Contenedor>
       <Fab
-        size={width < 480 ? 'medium' : 'large'}
+        size={width < 1024 ? 'medium' : 'large'}
         color="secondary.light"
         sx={{
           ':hover': { bgcolor: 'primary.main', color: 'white' },
@@ -22,7 +22,7 @@ const Social = () => {
         <GoogleIcon />
       </Fab>
       <Fab
-        size={width < 480 ? 'medium' : 'large'}
+        size={width < 1024 ? 'medium' : 'large'}
         color="secondary.light"
         sx={{
           ':hover': { bgcolor: 'primary.main', color: 'white' },
@@ -31,7 +31,7 @@ const Social = () => {
         <FacebookIcon />
       </Fab>
       <Fab
-        size={width < 480 ? 'medium' : 'large'}
+        size={width < 1024 ? 'medium' : 'large'}
         color="secondary.light"
         sx={{
           ':hover': { bgcolor: 'primary.main', color: 'white' },
@@ -40,7 +40,7 @@ const Social = () => {
         <TwitterIcon />
       </Fab>
       <Fab
-        size={width < 480 ? 'medium' : 'large'}
+        size={width < 1024 ? 'medium' : 'large'}
         color="secondary.light"
         sx={{
           ':hover': { bgcolor: 'primary.main', color: 'white' },
@@ -54,7 +54,7 @@ const Social = () => {
 
 const Contenedor = styled.div`
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   width: 100%;
 `

@@ -2,22 +2,22 @@ import styled from '@emotion/styled'
 import ImagenFondo from './../../assets/images/ImagenFondo.jpg'
 import Logo from './components/Logo'
 import Social from './components/Social'
-import Forms from './components/Forms'
+import Formulario from './components/Formulario'
 
 const Login = ({ login, recovery, signin }) => {
   return (
     <Fondo>
       <Contenedor>
         <Logo />
-        <Formulario>
+        <Campos>
           {login && (
             <>
               <Social />
               <Divisor />
             </>
           )}
-          <Forms login={login} recovery={recovery} signin={signin} />
-        </Formulario>
+          <Formulario login={login} recovery={recovery} signin={signin} />
+        </Campos>
       </Contenedor>
     </Fondo>
   )
@@ -39,28 +39,29 @@ const Contenedor = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: stretch;
   border-radius: 20px;
   min-width: 400px;
   min-height: 600px;
-  gap: 5rem;
+  gap: 3rem;
 
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 1024px) {
     width: 100%;
     height: 100%;
     border-radius: 0;
   }
 `
 
-const Formulario = styled.div`
+const Campos = styled.div`
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  width: 85%;
-  gap: 4rem;
   padding: 2rem;
+  width: 100%;
   height: 100%;
+  gap: 3rem;
 `
 
 const Divisor = styled.div`
