@@ -1,7 +1,5 @@
 import styled from '@emotion/styled'
-import React from 'react'
-
-import LogotipoDeal from './../../../assets/images/LogotipoDeal.png'
+import LogotipoDeal from 'src/assets/images/LogotipoDeal.png'
 
 const Logo = () => {
   return <Logotipo />

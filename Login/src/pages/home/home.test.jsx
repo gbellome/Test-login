@@ -1,10 +1,24 @@
-import { useAuth } from '../../context/userContext/authContext'
+import { useAuth } from '../../context/authContext'
 
 const Home = () => {
-  const { user } = useAuth()
+  const { user, logOut } = useAuth()
 
   console.log(user)
-  return <div>Home test</div>
+
+  const handleLogOut = async () => {
+    try {
+      await logOut()
+    } catch (error) {
+      console.error(error.message)
+    }
+  }
+
+  return (
+    <>
+      <div>Hola {user.email}</div>
+      <button onClick={handleLogOut}>salir</button>
+    </>
+  )
 }
 
 export default Home

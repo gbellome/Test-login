@@ -1,22 +1,24 @@
 import styled from '@emotion/styled'
-import ImagenFondo from './../../assets/images/ImagenFondo.jpg'
+import ImagenFondo from 'src/assets/images/ImagenFondo.jpg'
 import Logo from './components/Logo'
-import Social from './components/Social'
-import Formulario from './components/Formulario'
+import Social from './container/Social'
+import Formulario from './container/Formulario'
+import { useLocation } from 'react-router-dom'
 
-const Login = ({ login, recovery, signin }) => {
+const Login = () => {
+  const { pathname } = useLocation()
   return (
     <Fondo>
       <Contenedor>
         <Logo />
         <Campos>
-          {login && (
+          {pathname === '/SignIn' && (
             <>
               <Social />
               <Divisor />
             </>
           )}
-          <Formulario login={login} recovery={recovery} signin={signin} />
+          <Formulario />
         </Campos>
       </Contenedor>
     </Fondo>
