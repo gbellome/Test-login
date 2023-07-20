@@ -1,15 +1,14 @@
-import { useState, useEffect } from 'react'
-import { useNavigate, Link, useLocation } from 'react-router-dom'
+import { useState } from 'react'
+import { useNavigate, Link } from 'react-router-dom'
 import styled from '@emotion/styled'
 import { TextField, Button, Alert } from '@mui/material'
 import { useAuth } from 'src/context/authContext'
 import Password from 'src/components/Inputs/Password'
 
-const Formulario = () => {
+const Formulario = ({ pathname }) => {
   // Importo funciones útiles
   const Navegar = useNavigate()
-  const { pathname } = useLocation()
-  const { signUp, signIn } = useAuth()
+  const { signUp, signIn, resetPassword } = useAuth()
 
   const [user, setUser] = useState({
     email: '',
@@ -18,27 +17,10 @@ const Formulario = () => {
 
   // UseStates
   const [error, setError] = useState(false)
-  const [textButton, setTextButton] = useState()
-
-  // UseEffects
-  useEffect(() => {
-    switch (pathname) {
-      case '/SignIn':
-        setTextButton('Entrar')
-        break
-      case '/SignUp':
-        setTextButton('Registrar')
-        break
-      case '/Recovery':
-        setTextButton('Recuperar clave')
-        break
-    }
-  })
 
   // Handles
   const handleChange = ({ target: { name, value } }) => {
     setUser({ ...user, [name]: value })
-    console.log(user)
   }
 
   const handleSubmit = async (e) => {
@@ -48,6 +30,10 @@ const Formulario = () => {
     try {
       pathname === '/SignUp' && (await signUp(user.email, user.password))
       pathname === '/SignIn' && (await signIn(user.email, user.password))
+      if (pathname === '/Recovery') {
+        await resetPassword(user.email)
+        return
+      }
 
       Navegar('/Home')
     } catch (error) {
@@ -83,15 +69,12 @@ const Formulario = () => {
           </>
         )}
         {pathname === '/SignUp' && (
-          <>
-            <Password
-              caption={'Contraseña'}
-              value={user.password}
-              onChange={handleChange}
-              indicator
-            />
-            {/* <Password caption={'Repetir contraseña'} /> */}
-          </>
+          <Password
+            caption={'Contraseña'}
+            value={user.password}
+            onChange={handleChange}
+            indicator
+          />
         )}
       </Entradas>
       <Acciones>
@@ -101,7 +84,9 @@ const Formulario = () => {
           </Alert>
         )}
         <Button fullWidth variant="contained" color="primary" type="submit">
-          {textButton}
+          {pathname === '/SignIn' && 'Entrar'}
+          {pathname === '/SignUp' && 'Registrar'}
+          {pathname === '/Recovery' && 'Recuperar'}
         </Button>
         {pathname === '/SignIn' ? (
           <Link to="/SignUp">¿Todavía no te registraste? Vení</Link>

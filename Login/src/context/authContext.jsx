@@ -4,6 +4,10 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
+  GoogleAuthProvider,
+  FacebookAuthProvider,
+  signInWithPopup,
+  sendPasswordResetEmail,
 } from 'firebase/auth'
 import { auth } from '../config/firebase.config'
 
@@ -23,17 +27,42 @@ export const AuthProvider = ({ children }) => {
 
   const logOut = () => signOut(auth)
 
-  useEffect(() => {
-    const unSubuscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser)
-      setUserLoading(false)
-    })
+  const loginWithGoogle = () => {
+    const googleProvider = new GoogleAuthProvider()
+    return signInWithPopup(auth, googleProvider)
+  }
 
-    return () => unSubuscribe()
+  const loginWithFacebook = () => {
+    const facebookProvider = new FacebookAuthProvider()
+    return signInWithPopup(auth, facebookProvider)
+  }
+
+  const resetPassword = (email) => sendPasswordResetEmail(auth, email)
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      onAuthStateChanged(auth, (currentUser) => {
+        setUser(currentUser)
+        setUserLoading(false)
+      })
+    }, 2000)
+
+    return () => clearInterval(intervalId)
   }, [])
 
   return (
-    <authContext.Provider value={{ signUp, signIn, logOut, user, userLoading }}>
+    <authContext.Provider
+      value={{
+        signUp,
+        signIn,
+        logOut,
+        user,
+        userLoading,
+        loginWithGoogle,
+        loginWithFacebook,
+        resetPassword,
+      }}
+    >
       {children}
     </authContext.Provider>
   )

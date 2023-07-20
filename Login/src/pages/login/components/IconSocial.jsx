@@ -1,7 +1,7 @@
 import { Fab } from '@mui/material'
 import useScreenSize from '../../../hooks/useScreenSize'
 
-const IconSocial = ({ Social }) => {
+const IconSocial = ({ props: { Components, handleLogin } }) => {
   const { width } = useScreenSize()
 
   return (
@@ -11,8 +11,9 @@ const IconSocial = ({ Social }) => {
       sx={{
         ':hover': { bgcolor: 'primary.main', color: 'white' },
       }}
+      onClick={handleLogin}
     >
-      <Social />
+      <Components />
     </Fab>
   )
 }
