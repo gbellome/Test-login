@@ -8,6 +8,7 @@ import ProtectedRoute from '../routes/ProtectedRoute.routes'
 const RoutesMaster = () => {
   return (
     <Routes>
+      <Route path="/" element={<CargoShip />} />
       <Route
         path="/Home"
         element={
@@ -17,7 +18,6 @@ const RoutesMaster = () => {
         }
         index
       />
-      <Route path="/" element={<CargoShip />} />
       <Route path="/SignIn" element={<Login />} />
       <Route path="/Recovery" element={<Login />} />
       <Route path="/SignUp" element={<Login />} />

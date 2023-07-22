@@ -104,11 +104,7 @@ const NavBar = () => {
       </Box>
       <Box sx={styles.Pagina}>
         <Button sx={styles.Boton} onClick={handleToggleNavbar}>
-          <Box sx={styles.Titulo}>
-            {getLocation()}
-            {/* <HomeRounded /> */}
-            {/* <Typography variant="h4">Inicio</Typography> */}
-          </Box>
+          <Box sx={styles.Titulo}>{getLocation()}</Box>
           <Box sx={styles.Tab}></Box>
         </Button>
       </Box>
@@ -116,9 +112,6 @@ const NavBar = () => {
         <MenuNotifications />
         <MenuAuth />
       </Box>
-      {/* <Box>Acciones</Box> */}
-      {/* Hola {user.displayName || user.email} */}
-      {/* <button onClick={handleLogOut}>salir</button> */}
     </Box>
   )
 }
