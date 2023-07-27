@@ -9,7 +9,8 @@ import {
   signInWithPopup,
   sendPasswordResetEmail,
 } from 'firebase/auth'
-import { auth } from '../config/firebase.config'
+import { doc, setDoc } from 'firebase/firestore'
+import { auth, firestore } from '../config/firebase.config'
 
 const authContext = createContext()
 
@@ -19,8 +20,14 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
   const [userLoading, setUserLoading] = useState(true)
 
-  const signUp = (user, password) =>
-    createUserWithEmailAndPassword(auth, user, password)
+  const signUp = async (user, password) => {
+    const infoUser = await createUserWithEmailAndPassword(auth, user, password)
+    const docuRef = doc(firestore, `Usuarios/${infoUser.user.uid}`)
+    setDoc(docuRef, {
+      nombre: infoUser.user.displayName || infoUser.user.email,
+      rol: 'user',
+    })
+  }
 
   const signIn = (user, password) =>
     signInWithEmailAndPassword(auth, user, password)
@@ -40,6 +47,7 @@ export const AuthProvider = ({ children }) => {
   const resetPassword = (email) => sendPasswordResetEmail(auth, email)
 
   useEffect(() => {
+    // Fake promise
     const intervalId = setInterval(() => {
       onAuthStateChanged(auth, (currentUser) => {
         setUser(currentUser)
