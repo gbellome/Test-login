@@ -1,14 +1,20 @@
 import React from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Login from '../pages/login/login'
 import Home from '../pages/home/home.test'
-import CargoShip from '../utils/Animation/CargoShip'
 import ProtectedRoute from '../routes/ProtectedRoute.routes'
 
 const RoutesMaster = () => {
   return (
     <Routes>
-      <Route path="/" element={<CargoShip />} />
+      <Route
+        path="/"
+        element={
+          <ProtectedRoute>
+            <Navigate to="/Home" />
+          </ProtectedRoute>
+        }
+      />
       <Route
         path="/Home"
         element={

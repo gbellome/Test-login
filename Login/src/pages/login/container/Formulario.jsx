@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import styled from '@emotion/styled'
-import { TextField, Button, Alert } from '@mui/material'
+import { TextField, Alert } from '@mui/material'
+import { LoadingButton } from '@mui/lab'
 import { useAuth } from 'src/context/authContext'
 import Password from 'src/components/Inputs/Password'
+import { LIST_ERRORS_FIREBASE } from 'src/config/firebase.errors'
 
 const Formulario = ({ pathname }) => {
   // Importo funciones útiles
@@ -17,6 +19,7 @@ const Formulario = ({ pathname }) => {
 
   // UseStates
   const [error, setError] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   // Handles
   const handleChange = ({ target: { name, value } }) => {
@@ -25,6 +28,7 @@ const Formulario = ({ pathname }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setLoading(true)
     setError('')
 
     try {
@@ -37,17 +41,10 @@ const Formulario = ({ pathname }) => {
 
       Navegar('/Home')
     } catch (error) {
-      switch (error.code) {
-        case 'auth/invalid-email':
-          setError('Email incorrecto')
-        case 'auth/user-not-found':
-          setError('No estás registrado')
-        case 'auth/wrong-password':
-        case 'auth/missing-password':
-          setError('Contraseña incorrecta')
-        case 'auth/weak-password':
-          setError('6 caracteres mínimo')
-      }
+      setLoading(false)
+      setError(
+        LIST_ERRORS_FIREBASE[error.code] || LIST_ERRORS_FIREBASE['default']
+      )
     }
   }
 
@@ -83,11 +80,22 @@ const Formulario = ({ pathname }) => {
             {error}
           </Alert>
         )}
-        <Button fullWidth variant="contained" color="primary" type="submit">
+        <LoadingButton
+          loading={loading}
+          fullWidth
+          variant="contained"
+          color="primary"
+          type="submit"
+        >
           {pathname === '/SignIn' && 'Entrar'}
           {pathname === '/SignUp' && 'Registrar'}
           {pathname === '/Recovery' && 'Recuperar'}
-        </Button>
+        </LoadingButton>
+        {/* <Button fullWidth variant="contained" color="primary" type="submit">
+          {pathname === '/SignIn' && 'Entrar'}
+          {pathname === '/SignUp' && 'Registrar'}
+          {pathname === '/Recovery' && 'Recuperar'}
+        </Button> */}
         {pathname === '/SignIn' ? (
           <Link to="/SignUp">¿Todavía no te registraste? Vení</Link>
         ) : (
