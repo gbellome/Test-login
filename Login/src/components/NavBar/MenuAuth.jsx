@@ -4,7 +4,6 @@ import {
   Menu,
   MenuItem,
   ListItemIcon,
-  ListItemText,
   Divider,
   Avatar,
 } from '@mui/material'
@@ -15,8 +14,10 @@ import {
 } from '@mui/icons-material'
 import { useState } from 'react'
 import { useAuth } from 'src/context/authContext'
+import { useNavigate } from 'react-router-dom'
 
 const MenuAuth = () => {
+  const Navegar = useNavigate()
   const { user, logOut } = useAuth()
   const [anchorEl, setAnchorEl] = useState(null)
 
@@ -38,6 +39,8 @@ const MenuAuth = () => {
   const handleClose = () => {
     setAnchorEl(null)
   }
+
+  const handleNavigationConfig = () => Navegar('/Configuracion')
 
   return (
     <>
@@ -80,7 +83,7 @@ const MenuAuth = () => {
           {user.displayName || user.email}
         </MenuItem>
         <Divider />
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={handleNavigationConfig}>
           <ListItemIcon>
             <SettingsRounded fontSize="small" />
           </ListItemIcon>

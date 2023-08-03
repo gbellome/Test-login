@@ -3,8 +3,8 @@ import { Typography } from '@mui/material'
 import { useLocation } from 'react-router-dom'
 
 const Pages = {
-  Home: <HomeRounded />,
-  Configuration: <ConstructionRounded />,
+  Inicio: <HomeRounded />,
+  Configuracion: <ConstructionRounded />,
 }
 
 export const getLocation = () => {

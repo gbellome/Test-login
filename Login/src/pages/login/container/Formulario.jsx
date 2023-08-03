@@ -32,14 +32,15 @@ const Formulario = ({ pathname }) => {
     setError('')
 
     try {
-      pathname === '/SignUp' && (await signUp(user.email, user.password))
-      pathname === '/SignIn' && (await signIn(user.email, user.password))
-      if (pathname === '/Recovery') {
+      pathname === '/Registrar' && (await signUp(user.email, user.password))
+      pathname === '/IngresarSignIn' &&
+        (await signIn(user.email, user.password))
+      if (pathname === '/RecuperarClave') {
         await resetPassword(user.email)
         return
       }
 
-      Navegar('/Home')
+      Navegar('/Inicio')
     } catch (error) {
       setLoading(false)
       setError(
@@ -59,13 +60,13 @@ const Formulario = ({ pathname }) => {
           variant="outlined"
           onChange={handleChange}
         />
-        {pathname === '/SignIn' && (
+        {pathname === '/Ingresar' && (
           <>
             <Password caption={'Contraseña'} onChange={handleChange} />
-            <Link to="/Recovery">¿Olvidaste tu contraseña?</Link>
+            <Link to="/RecuperarClave">¿Olvidaste tu contraseña?</Link>
           </>
         )}
-        {pathname === '/SignUp' && (
+        {pathname === '/Registrar' && (
           <Password
             caption={'Contraseña'}
             value={user.password}
@@ -87,19 +88,14 @@ const Formulario = ({ pathname }) => {
           color="primary"
           type="submit"
         >
-          {pathname === '/SignIn' && 'Entrar'}
-          {pathname === '/SignUp' && 'Registrar'}
-          {pathname === '/Recovery' && 'Recuperar'}
+          {pathname === '/Ingresar' && 'Entrar'}
+          {pathname === '/Registrar' && 'Registrar'}
+          {pathname === '/RecuperarClave' && 'Recuperar'}
         </LoadingButton>
-        {/* <Button fullWidth variant="contained" color="primary" type="submit">
-          {pathname === '/SignIn' && 'Entrar'}
-          {pathname === '/SignUp' && 'Registrar'}
-          {pathname === '/Recovery' && 'Recuperar'}
-        </Button> */}
-        {pathname === '/SignIn' ? (
-          <Link to="/SignUp">¿Todavía no te registraste? Vení</Link>
+        {pathname === '/Ingresar' ? (
+          <Link to="/Registrar">¿Todavía no te registraste? Vení</Link>
         ) : (
-          <Link to="/SignIn">Volver</Link>
+          <Link to="/Ingresar">Volver</Link>
         )}
       </Acciones>
     </Contenedor>

@@ -12,7 +12,7 @@ const Login = () => {
       <Contenedor>
         <Logo />
         <Campos>
-          {pathname === '/SignIn' && (
+          {pathname === '/Ingresar' && (
             <>
               <Social />
               <Divisor />

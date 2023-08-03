@@ -1,11 +1,11 @@
 import Main from 'src/utils/Main/Main'
 
-const Home = () => {
+const Config = () => {
   return (
     <Main>
-      <div>Inicio</div>
+      <div>Configuracion</div>
     </Main>
   )
 }
 
-export default Home
+export default Config

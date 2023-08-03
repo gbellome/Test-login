@@ -1,27 +1,13 @@
-import { useAuth } from 'src/context/authContext'
 import { useState } from 'react'
 import { Box, Button, Typography } from '@mui/material'
-import {
-  AccountCircleRounded,
-  NotificationsRounded,
-  BookmarksRounded,
-} from '@mui/icons-material'
-import { getLocation } from '../../routes/pages.routes'
+import { getLocation } from 'src/routes/pages.routes'
 import MenuAuth from './MenuAuth'
 import MenuNotifications from './MenuNotifications'
+import { useNavigate } from 'react-router-dom'
 
-const NavBar = () => {
-  const { user, logOut } = useAuth()
-
+function NavBar() {
+  const Navegar = useNavigate()
   const [openNavbar, setOpenNavbar] = useState()
-
-  const handleLogOut = async () => {
-    try {
-      await logOut()
-    } catch (error) {
-      console.error(error.message)
-    }
-  }
 
   const handleToggleNavbar = () => {
     setOpenNavbar(!openNavbar)

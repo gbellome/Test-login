@@ -54,10 +54,8 @@ const MenuNotifications = () => {
           onKeyDown={toggleDrawer(false)}
         >
           <List>
-            {listNotifications.map((item, index) => (
-              <>
-                <Notification item={item} key={index} />
-              </>
+            {listNotifications.map((item) => (
+              <Notification item={item} key={item} />
             ))}
           </List>
         </Box>

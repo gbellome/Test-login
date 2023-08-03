@@ -15,7 +15,7 @@ const Social = () => {
       Components: Google,
       handleLogin: async () => {
         await loginWithGoogle()
-        Navegar('/Home')
+        Navegar('/Inicio')
       },
     },
     {
@@ -23,21 +23,21 @@ const Social = () => {
       Components: Facebook,
       handleLogin: async () => {
         await loginWithFacebook()
-        Navegar('/Home')
+        Navegar('/Inicio')
       },
     },
     {
       name: 'Twitter',
       Components: Twitter,
       handleLogin: async () => {
-        Navegar('/Home')
+        Navegar('/Inicio')
       },
     },
     {
       name: 'LinkedIn',
       Components: LinkedIn,
       handleLogin: async () => {
-        Navegar('/Home')
+        Navegar('/Inicio')
       },
     },
   ]

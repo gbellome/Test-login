@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import Login from '../pages/login/login'
 import Home from '../pages/home/home.test'
 import ProtectedRoute from '../routes/ProtectedRoute.routes'
+import Config from '../pages/configuration/config'
 
 const RoutesMaster = () => {
   return (
@@ -11,12 +12,12 @@ const RoutesMaster = () => {
         path="/"
         element={
           <ProtectedRoute>
-            <Navigate to="/Home" />
+            <Navigate to="/Inicio" />
           </ProtectedRoute>
         }
       />
       <Route
-        path="/Home"
+        path="/Inicio"
         element={
           <ProtectedRoute>
             <Home />
@@ -24,9 +25,17 @@ const RoutesMaster = () => {
         }
         index
       />
-      <Route path="/SignIn" element={<Login />} />
-      <Route path="/Recovery" element={<Login />} />
-      <Route path="/SignUp" element={<Login />} />
+      <Route
+        path="/Configuracion"
+        element={
+          <ProtectedRoute>
+            <Config />
+          </ProtectedRoute>
+        }
+      />
+      <Route path="/Ingresar" element={<Login />} />
+      <Route path="/RecuperarClave" element={<Login />} />
+      <Route path="/Registrar" element={<Login />} />
     </Routes>
   )
 }

@@ -7,7 +7,7 @@ const ProtectedRoute = ({ children }) => {
 
   if (userLoading) return <CargoShip />
 
-  if (!user) return <Navigate to="/SignIn" />
+  if (!user) return <Navigate to="/Ingresar" />
 
   return <>{children}</>
 }
