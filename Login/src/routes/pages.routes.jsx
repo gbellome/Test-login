@@ -1,5 +1,5 @@
 import { HomeRounded, ConstructionRounded } from '@mui/icons-material'
-import { Typography } from '@mui/material'
+import { Box, Fade, Typography } from '@mui/material'
 import { useLocation } from 'react-router-dom'
 
 const Pages = {
@@ -11,9 +11,11 @@ export const getLocation = () => {
   const location = useLocation()
   const pathname = location.pathname.slice(1)
   return (
-    <>
-      {Pages[pathname]}
-      <Typography variant="h4">{pathname}</Typography>
-    </>
+    <Fade in={true}>
+      <Box sx={{ display: 'flex', gap: '1rem' }}>
+        {Pages[pathname]}
+        <Typography variant="h4">{pathname}</Typography>
+      </Box>
+    </Fade>
   )
 }

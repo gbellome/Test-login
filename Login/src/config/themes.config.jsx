@@ -35,11 +35,9 @@ export const Theme = createTheme({
   },
   typography: {
     htmlFontSize: 14,
-    /* fontFamily: customVariable.fontFamily, */
     fontFamily: 'inter, sans-serif',
     fontSize: 14,
     h1: {
-      /* fontFamily: customVariable.fontFamily, */
       fontFamily: 'inter, sans-serif',
       fontWeight: 700,
       fontSize: '4rem',
@@ -48,7 +46,6 @@ export const Theme = createTheme({
       textTransform: 'uppercase',
     },
     h2: {
-      /* fontFamily: customVariable.fontFamily, */
       fontFamily: 'inter, sans-serif',
       fontWeight: 600,
       fontSize: '3rem',
@@ -57,7 +54,6 @@ export const Theme = createTheme({
       textTransform: 'uppercase',
     },
     h3: {
-      /* fontFamily: customVariable.fontFamily, */
       fontFamily: 'inter, sans-serif',
       fontWeight: 500,
       fontSize: '2rem',
@@ -66,7 +62,6 @@ export const Theme = createTheme({
       textTransform: 'uppercase',
     },
     h4: {
-      /* fontFamily: customVariable.fontFamily, */
       fontFamily: 'inter, sans-serif',
       fontWeight: 500,
       fontSize: '1.5rem',
@@ -75,7 +70,6 @@ export const Theme = createTheme({
       textTransform: 'uppercase',
     },
     h5: {
-      /* fontFamily: customVariable.fontFamily, */
       fontFamily: 'inter, sans-serif',
       fontWeight: 500,
       fontSize: '1rem',
@@ -84,7 +78,6 @@ export const Theme = createTheme({
       textTransform: 'uppercase',
     },
     button: {
-      /* fontFamily: customVariable.fontFamily, */
       fontFamily: 'inter, sans-serif',
       fontWeight: 400,
       fontSize: '0.875rem',

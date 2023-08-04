@@ -3,10 +3,8 @@ import { Box, Button, Typography } from '@mui/material'
 import { getLocation } from 'src/routes/pages.routes'
 import MenuAuth from './MenuAuth'
 import MenuNotifications from './MenuNotifications'
-import { useNavigate } from 'react-router-dom'
 
 function NavBar() {
-  const Navegar = useNavigate()
   const [openNavbar, setOpenNavbar] = useState()
 
   const handleToggleNavbar = () => {

@@ -8,19 +8,24 @@ import {
   ListItemText,
 } from '@mui/material'
 
-const Notification = ({ item }) => {
+const Notification = ({ item, index, handle }) => {
   return (
     <>
       <ListItem
         alignItems="flex-start"
+        key={index}
         disablePadding
         secondaryAction={
-          <IconButton edge="end" aria-label="close">
+          <IconButton
+            edge="end"
+            aria-label="delete"
+            onClick={() => handle(item)}
+          >
             <CloseRounded fontSize="small" />
           </IconButton>
         }
       >
-        <ListItemButton sx={{ py: 2 }}>
+        <ListItemButton sx={{ py: 2 }} key={index}>
           <ListItemAvatar>
             <Avatar>{item.Icon}</Avatar>
           </ListItemAvatar>

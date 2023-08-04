@@ -21,8 +21,6 @@ const MenuAuth = () => {
   const { user, logOut } = useAuth()
   const [anchorEl, setAnchorEl] = useState(null)
 
-  console.log(user)
-
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget)
   }

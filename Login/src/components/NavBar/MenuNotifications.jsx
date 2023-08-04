@@ -3,8 +3,29 @@ import { NotificationsRounded } from '@mui/icons-material'
 import { useState } from 'react'
 import Notification from './Notification'
 
+const list = [
+  {
+    Icon: <NotificationsRounded />,
+    name: 'Inbox',
+    subName: 'hace 1 año',
+  },
+  {
+    Icon: <NotificationsRounded />,
+    name: 'Starred',
+  },
+  {
+    Icon: <NotificationsRounded />,
+    name: 'Send email',
+  },
+  {
+    Icon: <NotificationsRounded />,
+    name: 'Drafts',
+  },
+]
+
 const MenuNotifications = () => {
   const [state, setState] = useState(false)
+  const [listNotifications, setListNotifications] = useState(list)
 
   const toggleDrawer = (open) => (event) => {
     if (
@@ -17,25 +38,9 @@ const MenuNotifications = () => {
     setState(open)
   }
 
-  const listNotifications = [
-    {
-      Icon: <NotificationsRounded />,
-      name: 'Inbox',
-      subName: 'hace 1 año',
-    },
-    {
-      Icon: <NotificationsRounded />,
-      name: 'Starred',
-    },
-    {
-      Icon: <NotificationsRounded />,
-      name: 'Send email',
-    },
-    {
-      Icon: <NotificationsRounded />,
-      name: 'Drafts',
-    },
-  ]
+  const handleRemoveItem = (item) => {
+    setListNotifications((prev) => [...prev.filter((i) => i !== item)])
+  }
 
   return (
     <>
@@ -47,15 +52,10 @@ const MenuNotifications = () => {
         </IconButton>
       </Tooltip>
       <Drawer anchor={'right'} open={state} onClose={toggleDrawer(false)}>
-        <Box
-          sx={{ width: 300 }}
-          role="presentation"
-          onClick={toggleDrawer(false)}
-          onKeyDown={toggleDrawer(false)}
-        >
+        <Box sx={{ width: 300 }} role="presentation">
           <List>
-            {listNotifications.map((item) => (
-              <Notification item={item} key={item} />
+            {listNotifications.map((item, index) => (
+              <Notification item={item} key={index} handle={handleRemoveItem} />
             ))}
           </List>
         </Box>
