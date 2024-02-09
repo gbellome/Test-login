@@ -29,6 +29,7 @@ function NavBar() {
       boxSizing: 'border-box',
       paddingLeft: '3rem',
     },
+
     Logotipo: {
       color: 'background.default',
     },

@@ -1,5 +1,5 @@
 import { Fab } from '@mui/material'
-import useScreenSize from '../../../hooks/useScreenSize'
+import useScreenSize from 'src/hooks/useScreenSize'
 
 const IconSocial = ({ props: { Components, handleLogin } }) => {
   const { width } = useScreenSize()
